@@ -5,6 +5,13 @@ namespace supermva_mvc.Controllers
     public class TicketsController : Controller
     {
         [HttpGet("/ticket")]
-        public string Index() => "Hello from tickets!";
+        public IActionResult Index() {
+            return View();
+        }
+
+        public string Index2()
+        {
+            return "Hello from tickets!";
+        }
     }
 }
