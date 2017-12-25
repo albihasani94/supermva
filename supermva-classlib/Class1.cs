@@ -6,7 +6,7 @@ namespace supermva_classlib
     {
         public static string Greeting()
         {
-            return "Hello from the class library";
+            return "..from the class library";
         }
     }
 }

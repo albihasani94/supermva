@@ -36,7 +36,8 @@ namespace supermvaweb
             app.Run(async (context) =>
             {
                 // throw new Exception("Test Exception");
-                await context.Response.WriteAsync($"Hello {env.EnvironmentName}!");
+                var name = supermva_classlib.Class1.Greeting();
+                await context.Response.WriteAsync($"Hello {name}!");
             });
         }
     }
