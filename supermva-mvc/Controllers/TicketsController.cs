@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using supermva_mvc.Models;
 
 namespace supermva_mvc.Controllers
 {
@@ -6,7 +7,11 @@ namespace supermva_mvc.Controllers
     {
         [HttpGet("/ticket")]
         public IActionResult Index() {
-            return View();
+            //go to the database
+            //get some model
+            var s = new Seat() { Location = "Orchestra", Price = 300.00 };
+
+            return View(s);
         }
 
         public string Index2()
