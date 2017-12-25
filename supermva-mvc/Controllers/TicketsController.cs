@@ -14,9 +14,6 @@ namespace supermva_mvc.Controllers
             return View(s);
         }
 
-        public string Index2()
-        {
-            return "Hello from tickets!";
-        }
+        public string Index2() => "Hello from tickets!";
     }
 }
