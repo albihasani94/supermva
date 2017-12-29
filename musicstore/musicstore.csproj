@@ -1,12 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
     <TargetFramework>netcoreapp1.1</TargetFramework>
     <PackageTargetFallback>$(PackageTargetFallback);portable-net45+win8+wp8+wpa81;</PackageTargetFallback>
     <UserSecretsId>aspnet-musicstore-83E2A844-F7EA-4E63-8A81-5BBF03B4ADDA</UserSecretsId>
   </PropertyGroup>
-  <ItemGroup>
-    <None Update="app.db" CopyToOutputDirectory="PreserveNewest" />
-  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.4" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="1.1.3" />

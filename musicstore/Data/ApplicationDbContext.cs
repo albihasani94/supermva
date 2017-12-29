@@ -24,5 +24,6 @@ namespace musicstore.Data
         }
 
         public DbSet<musicstore.Models.Album> Album { get; set; }
+        public DbSet<musicstore.Models.Product> Product { get; set; }
     }
 }

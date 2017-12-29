@@ -65,7 +65,7 @@ namespace musicstore.Controllers_
             return View(album);
         }
 
-        // GET: Album/Edit/5
+        // GET: Album/Edit/5        
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
