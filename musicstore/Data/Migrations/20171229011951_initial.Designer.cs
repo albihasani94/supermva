@@ -8,7 +8,7 @@ using musicstore.Data;
 namespace musicstore.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20171229010744_initial")]
+    [Migration("20171229011951_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

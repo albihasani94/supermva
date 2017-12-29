@@ -6,7 +6,9 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using MySql.Data.EntityFrameworkCore.Extensions;
+//using Pomelo.EntityFrameworkCore;
+//using Pomelo.EntityFrameworkCore.Extensions;
+//using MySql.Data.EntityFrameworkCore.Extensions;
 // using Pomelo.EntityFrameworkCore;
 // using Pomelo.EntityFrameworkCore.Extensions;
 using Microsoft.Extensions.Configuration;
@@ -55,7 +57,7 @@ namespace musicstore
             var sqlConnection = Configuration.GetConnectionString("MySQLConnection");
 
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseMySQL(sqlConnection));
+                options.UseMySql(sqlConnection));
             
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
