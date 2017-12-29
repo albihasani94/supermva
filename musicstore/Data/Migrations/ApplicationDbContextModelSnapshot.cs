@@ -131,7 +131,9 @@ namespace musicstore.Data.Migrations
 
                     b.Property<string>("Genre");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(60);
 
                     b.Property<decimal>("Price");
 

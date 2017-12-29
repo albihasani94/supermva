@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using musicstore.Models;
+//using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace musicstore.Data
 {
@@ -21,6 +22,8 @@ namespace musicstore.Data
             // Customize the ASP.NET Identity model and override the defaults if needed.
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
+            //builder.Entity<HistoryRow>().Property(h => h.MigrationId).HasMaxLength(100).IsRequired();
+            //builder.Entity<HistoryRow>().Property(h => h.ContextKey).HasMaxLength(200).IsRequired();
         }
 
         public DbSet<musicstore.Models.Album> Album { get; set; }
