@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using musicstore.Data;
 using musicstore.Models;
 using musicstore.Services;
+using Microsoft.AspNetCore.Http;
 
 namespace musicstore
 {
@@ -78,12 +79,22 @@ namespace musicstore
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler(subApp =>
+                {
+                    subApp.Run(async context =>
+                    {
+                        context.Response.ContentType = "text/html";
+                        await context.Response.WriteAsync("<strong>Application Error in Production</strong>");
+                    });
+                });
             }
 
             app.UseStaticFiles();
 
             app.UseIdentity();
+            
+            app.Run(context =>
+                throw new InvalidOperationException("Haha - I ruined this"));
 
             // Add external authentication middleware below. To configure them please see https://go.microsoft.com/fwlink/?LinkID=532715
 
