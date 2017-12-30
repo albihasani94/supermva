@@ -13,6 +13,7 @@ using musicstore.Data;
 using musicstore.Models;
 using musicstore.Services;
 using Microsoft.AspNetCore.Http;
+using musicstore.Middleware;
 
 namespace musicstore
 {
@@ -39,6 +40,7 @@ namespace musicstore
         {
             this.Configuration = configuration;
         }
+
         public IConfigurationRoot Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -58,6 +60,8 @@ namespace musicstore
                 .AddDefaultTokenProviders();
 
             services.AddMvc();
+            services.AddSingleton<IRequestIdFactory, RequestIdFactory>();
+            services.AddScoped<IRequestId, RequestId>();
 
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
@@ -98,7 +102,9 @@ namespace musicstore
                 AppId = "1791183524515899", //Configuration["Authentication:Facebook:AppId"],
                 AppSecret = "fe33bbdc30ddfbbd73363239d25dcc61" //Configuration["Authentication:Facebook:AppSecret"]
             });
-            
+
+            app.UseMiddleware<RequestIdMiddleware>();
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

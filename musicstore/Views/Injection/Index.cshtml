@@ -1,0 +1,10 @@
+@model musicstore.Controllers.InjectionController
+@inject musicstore.Services.IRequestId req
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Hello injection in dot net core!</h1>
+
+<p>RequestId: @req.Id</p>
