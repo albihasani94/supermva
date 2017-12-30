@@ -35,13 +35,11 @@ namespace musicstore
             Configuration = builder.Build();
         }
 
-        public Startup(IConfigurationRoot configuration) 
+        public Startup(IConfigurationRoot configuration)
         {
             this.Configuration = configuration;
-            
-               
         }
-                public IConfigurationRoot Configuration { get; }
+        public IConfigurationRoot Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -49,12 +47,12 @@ namespace musicstore
             // Add framework services.
             // services.AddDbContext<ApplicationDbContext>(options =>
             //     options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
-            
+
             var sqlConnection = Configuration.GetConnectionString("MySQLConnection");
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseMySql(sqlConnection));
-            
+
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
@@ -94,7 +92,13 @@ namespace musicstore
             app.UseIdentity();
 
             // Add external authentication middleware below. To configure them please see https://go.microsoft.com/fwlink/?LinkID=532715
-
+            app.UseFacebookAuthentication(new FacebookOptions()
+            {
+                //for some reason only hardcoded values will work, mostly because of updated fb authentication methods
+                AppId = "1791183524515899", //Configuration["Authentication:Facebook:AppId"],
+                AppSecret = "fe33bbdc30ddfbbd73363239d25dcc61" //Configuration["Authentication:Facebook:AppSecret"]
+            });
+            
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
