@@ -35,7 +35,7 @@ namespace musicstore.Controllers
             _log.LogDebug("Getting the product with id: {}", id);
             var product = _context.Product.SingleOrDefault(p => p.ID == id);
 
-            return product == null ? (IActionResult) this.NotFound() : Ok(product);
+            return product == null ? (IActionResult) NotFound() : Ok(product);
         }
 
         [HttpPost]
@@ -44,7 +44,7 @@ namespace musicstore.Controllers
             _log.LogDebug("Adding new Product");
             if (!ModelState.IsValid)
             {
-                return BadRequest();
+                return BadRequest(ModelState);
             }
 
             _context.Add(product);
